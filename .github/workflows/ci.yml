@@ -10,6 +10,7 @@ jobs:
   ci:
     uses: quiquecmtt/reusable-workflows/.github/workflows/terraform-ci.yml@main
     with:
+      validate_directory: "tests"
       enable_security_scan: true
       enable_docs: true
       allowed_pr_author: "quiquecmtt"
