@@ -1,0 +1,92 @@
+name: Terraform CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Terraform Lint & Validate
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push' ||
+      (
+        github.event_name == 'pull_request' &&
+        github.event.pull_request.user.login == 'quiquecmtt'
+      )
+    steps:
+      - name: Checkout
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init -backend=false
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@4cb9feea73331a35b422df102992a03a44a3bb33 # v6
+
+      - name: Init TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint --recursive
+
+  security:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push' ||
+      (
+        github.event_name == 'pull_request' &&
+        github.event.pull_request.user.login == 'quiquecmtt'
+      )
+    steps:
+      - name: Checkout
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+
+      - name: Checkov Security Scan
+        uses: bridgecrewio/checkov-action@d1841972b1c8dad696b0c26fa8001dd4fbec7f89 # v12
+        with:
+          directory: .
+          framework: terraform
+          quiet: true
+          soft_fail: true
+
+      - name: TFSec Security Scan
+        uses: aquasecurity/tfsec-action@b466648d6e39e7c75324f25d83891571e6f97f3e # v1.0.3
+        with:
+          soft_fail: true
+
+  cost:
+    name: Cost Estimation
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push' ||
+      (
+        github.event_name == 'pull_request' &&
+        github.event.pull_request.user.login == 'quiquecmtt'
+      )
+    steps:
+      - name: Checkout
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+
+      - name: Setup Infracost
+        uses: infracost/actions/setup@72147a9d5b0f5260ad82c233e52e90a7b447c17c # v3
+        with:
+          api-key: ${{ secrets.INFRACOST_API_KEY }}
+
+      - name: Run Infracost
+        run: infracost breakdown --path . --format table
