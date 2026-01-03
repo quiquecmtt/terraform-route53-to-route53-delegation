@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
 
       - name: Checkov Security Scan
-        uses: bridgecrewio/checkov-action@d1841972b1c8dad696b0c26fa8001dd4fbec7f89 # v12
+        uses: bridgecrewio/checkov-action@8f61ce5b8a3afb4ca94d236b75201878ded6d2cd # v12
         with:
           directory: .
           framework: terraform
@@ -65,7 +65,7 @@ jobs:
           soft_fail: true
 
       - name: TFSec Security Scan
-        uses: aquasecurity/tfsec-action@b466648d6e39e7c75324f25d83891571e6f97f3e # v1.0.3
+        uses: aquasecurity/tfsec-action@b466648d6e39e7c75324f25d83891162a721f2d6 # v1.0.3
         with:
           soft_fail: true
 
@@ -84,7 +84,7 @@ jobs:
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
 
       - name: Setup Infracost
-        uses: infracost/actions/setup@72147a9d5b0f5260ad82c233e52e90a7b447c17c # v3
+        uses: infracost/actions/setup@e9d6e6cd65e168e76b0de50ff9957d2fe8bb1832 # v3
         with:
           api-key: ${{ secrets.INFRACOST_API_KEY }}
 
