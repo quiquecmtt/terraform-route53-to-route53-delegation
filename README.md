@@ -42,6 +42,9 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_route53_hosted_zone_dnssec.delegated_zone_dnssec](https://registry.terraform.io/providers/hashicorp/aws/6.33.0/docs/resources/route53_hosted_zone_dnssec) | resource |
+| [aws_route53_key_signing_key.delegated_zone_dnssec](https://registry.terraform.io/providers/hashicorp/aws/6.33.0/docs/resources/route53_key_signing_key) | resource |
+| [aws_route53_query_log.delegated_zone_query_log](https://registry.terraform.io/providers/hashicorp/aws/6.33.0/docs/resources/route53_query_log) | resource |
 | [aws_route53_record.delegation_ns_records](https://registry.terraform.io/providers/hashicorp/aws/6.33.0/docs/resources/route53_record) | resource |
 | [aws_route53_zone.delegated_zone](https://registry.terraform.io/providers/hashicorp/aws/6.33.0/docs/resources/route53_zone) | resource |
 | [aws_caller_identity.delegated](https://registry.terraform.io/providers/hashicorp/aws/6.33.0/docs/data-sources/caller_identity) | data source |
@@ -52,6 +55,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dnssec_kms_key_arn"></a> [dnssec\_kms\_key\_arn](#input\_dnssec\_kms\_key\_arn) | KMS key ARN for DNSSEC signing. Required if enable\_dnssec is true | `string` | `null` | no |
+| <a name="input_enable_dnssec"></a> [enable\_dnssec](#input\_enable\_dnssec) | Enable DNSSEC signing for the delegated zone | `bool` | `false` | no |
+| <a name="input_enable_query_logging"></a> [enable\_query\_logging](#input\_enable\_query\_logging) | Enable DNS query logging for the delegated zone | `bool` | `false` | no |
+| <a name="input_query_logging_cloudwatch_log_group_arn"></a> [query\_logging\_cloudwatch\_log\_group\_arn](#input\_query\_logging\_cloudwatch\_log\_group\_arn) | CloudWatch log group ARN for DNS query logging. Required if enable\_query\_logging is true | `string` | `null` | no |
 | <a name="input_route53_delegated_zone"></a> [route53\_delegated\_zone](#input\_route53\_delegated\_zone) | Route53 (sub)domain to delegate to Route53 | `string` | n/a | yes |
 | <a name="input_route53_delegating_zone"></a> [route53\_delegating\_zone](#input\_route53\_delegating\_zone) | Route53 zone used for delegation | `string` | n/a | yes |
 
