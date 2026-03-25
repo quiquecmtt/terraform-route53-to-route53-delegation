@@ -24,15 +24,15 @@ module "route53_delegation" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.35.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.37.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.35.1 |
-| <a name="provider_aws.delegated"></a> [aws.delegated](#provider\_aws.delegated) | 6.35.1 |
-| <a name="provider_aws.delegating"></a> [aws.delegating](#provider\_aws.delegating) | 6.35.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.37.0 |
+| <a name="provider_aws.delegated"></a> [aws.delegated](#provider\_aws.delegated) | 6.37.0 |
+| <a name="provider_aws.delegating"></a> [aws.delegating](#provider\_aws.delegating) | 6.37.0 |
 
 ## Modules
 
@@ -42,14 +42,14 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_route53_hosted_zone_dnssec.delegated_zone_dnssec](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/route53_hosted_zone_dnssec) | resource |
-| [aws_route53_key_signing_key.delegated_zone_dnssec](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/route53_key_signing_key) | resource |
-| [aws_route53_query_log.delegated_zone_query_log](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/route53_query_log) | resource |
-| [aws_route53_record.delegation_ns_records](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/route53_record) | resource |
-| [aws_route53_zone.delegated_zone](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/route53_zone) | resource |
-| [aws_caller_identity.delegated](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/caller_identity) | data source |
-| [aws_caller_identity.delegating](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/caller_identity) | data source |
-| [aws_route53_zone.delegating_zone](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/route53_zone) | data source |
+| [aws_route53_hosted_zone_dnssec.delegated_zone_dnssec](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/resources/route53_hosted_zone_dnssec) | resource |
+| [aws_route53_key_signing_key.delegated_zone_dnssec](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/resources/route53_key_signing_key) | resource |
+| [aws_route53_query_log.delegated_zone_query_log](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/resources/route53_query_log) | resource |
+| [aws_route53_record.delegation_ns_records](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/resources/route53_record) | resource |
+| [aws_route53_zone.delegated_zone](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/resources/route53_zone) | resource |
+| [aws_caller_identity.delegated](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/data-sources/caller_identity) | data source |
+| [aws_caller_identity.delegating](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/data-sources/caller_identity) | data source |
+| [aws_route53_zone.delegating_zone](https://registry.terraform.io/providers/hashicorp/aws/6.37.0/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
 
